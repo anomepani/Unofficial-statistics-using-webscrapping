@@ -1,0 +1,14 @@
+{
+    "name": "unofficial-c-sharpcorner-statistics",
+    "version": "0.0.1",
+    "description": "This repo contains Simple node JS app to collect c-sharpcorner website statistics based on fetch and cheerio.js",
+    "main": "app.js",
+    "author": {
+        "name": "anomepani"
+    },
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.2",
+        "fs": "0.0.1-security",
+        "node-fetch": "2.2.0"
+    }
+}
