@@ -38,25 +38,33 @@ function getTopGithubTopics(targetURL) {
         //console.log("getRequestAsync -> Requested github completed");
         var $ = cheerio.load(response.body);
         //totalTopics = $(".border-bottom .py-4 h3 a").length;
+        var totalRepoCount = $(".Counter").text();
+        var repoCount = $(".Counter").text();
+        var topic = $(".py-6 h1").text();
+        categoryResult.repoCount = totalRepoCount;
+        //TODO for future githubStats will be array of object if we have to grab top 5 repository based on topic
+        var githubStats = {};
+        githubStats = { repoCount: repoCount, topic: topic }
         $("h3.f3 a").each((i, ele) => {
+            // Grabs stats for only top first repository for selected repo
             if (i == 0) {
                 var $selector = $(ele);
                 var topicUrl = rootUrl + $selector.attr("href") + "?o=desc&s=stars";
+
                 //var projectName = $selector.find(".link-gray-dark").text();
                 console.log(topicUrl);
-                getAllFeaturedGithubStats(topicUrl);
+                getAllFeaturedGithubStats(topicUrl, githubStats);
             }
         });
     });
 
 }
 
-function getAllFeaturedGithubStats(targetURL) {
+function getAllFeaturedGithubStats(targetURL, githubStats) {
     getRequestAsync(targetURL, {}).then((response) => {
         executedCount++;
         // console.log("getRequestAsync -> Requested github started");
         var $ = cheerio.load(response.body);
-        var githubStats = {};
         githubStats.githubUrl = targetURL;
         githubStats.author = $("[itemprop=author]").text().trim();
         githubStats.project = $("strong[itemprop=name]").text().trim();
@@ -97,7 +105,7 @@ function getAllFeaturedGithubStats(targetURL) {
         if (totalTopics == executedCount) {
             console.log("We reached at Last category then generate file for");
             //When we reached at Last category request then generate file json file 
-            fs.writeFile('github-statistics-updated.json', JSON.stringify(categoryResult), "utf8", function(err) {
+            fs.writeFile('github-statistics.json', JSON.stringify(categoryResult), "utf8", function(err) {
                 // fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
                 if (err) {
                     console.log(err)
