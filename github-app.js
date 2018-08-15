@@ -41,7 +41,7 @@ function getTopGithubTopics(targetURL) {
         $("h3.f3 a").each((i, ele) => {
             if (i == 0) {
                 var $selector = $(ele);
-                var topicUrl = rootUrl + $selector.attr("href");
+                var topicUrl = rootUrl + $selector.attr("href") + "?o=desc&s=stars";
                 //var projectName = $selector.find(".link-gray-dark").text();
                 console.log(topicUrl);
                 getAllFeaturedGithubStats(topicUrl);
@@ -97,7 +97,7 @@ function getAllFeaturedGithubStats(targetURL) {
         if (totalTopics == executedCount) {
             console.log("We reached at Last category then generate file for");
             //When we reached at Last category request then generate file json file 
-            fs.writeFile('github-statistics1.json', JSON.stringify(categoryResult), "utf8", function(err) {
+            fs.writeFile('github-statistics-updated.json', JSON.stringify(categoryResult), "utf8", function(err) {
                 // fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
                 if (err) {
                     console.log(err)
