@@ -34,4 +34,4 @@ $ npm install node-fetch --save
 ```
 
 
-### Disclaimer - This not official version of c-sharpcorner app,I have created simple node js app for learning webscraping to collect statistics based on official c-sharpcorner website..
+### Disclaimer - I have created simple node js app for learning webscraping to collect statistics based on c-sharpcorner and github website..
