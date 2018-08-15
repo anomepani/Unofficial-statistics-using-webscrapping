@@ -1,5 +1,5 @@
-# Unofficial-c-sharpcorner-statistics
-This repo contains Simple Node JS Program to generate c-sharpcorner website statistics based on fetch and cheerio.js
+# Unofficial statistics for c-sharpcorner, github using webscrapping
+This repo contains Simple Node JS Program to generate c-sharpcorner and github website statistics based on fetch and cheerio.js
 
 This is kind of Web scrapping app, which I have built using help of cheerio.js and fetch api for node js
 
@@ -34,4 +34,4 @@ $ npm install node-fetch --save
 ```
 
 
-### Disclaimer - This not official version of c-sharpcorner app,I have created simple node js app for learning webscraping to collect statistics based on official c-sharpcorner website..
+### Disclaimer - I have created simple node js app for learning webscraping to collect statistics based on c-sharpcorner and github website..
