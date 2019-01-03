@@ -40,7 +40,7 @@ $ npm install node-fetch --save
 ```js
 $ npm install
 ```
-2. Then run file executing below command
+2. Then run below to run program or app
 ```js
 $ node app.js 
 or 
