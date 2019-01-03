@@ -33,5 +33,18 @@ Stable release (`2.x`)
 $ npm install node-fetch --save
 ```
 
+## How to run this app
+
+1. First Install Required Package by running npm install command
+
+```js
+$ npm install
+```
+2. Then run file executing below command
+```js
+$ node app.js 
+or 
+$ node github-app.js
+```
 
 ### Disclaimer - I have created simple node js app for learning webscraping to collect statistics based on c-sharpcorner and github website..
