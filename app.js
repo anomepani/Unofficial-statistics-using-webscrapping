@@ -7,7 +7,17 @@ var fs = require('fs');
 var cheerio = require('cheerio');
 var fetch = require("node-fetch");
 
-//const axios = require("axios");
+// Attaching a new function  toShortFormat()  to any instance of Date() class
+//dd-mm-yyyy Format
+Date.prototype.toShortFormat = function() {
+
+        var day = this.getDate();
+        var month = this.getMonth();
+        var year = this.getFullYear();
+
+        return "" + day + "-" + (month + 1) + "-" + year;
+    }
+    //const axios = require("axios");
 var csharpURL = "https://www.c-sharpcorner.com/technologies";
 var categoryResult = [];
 
@@ -82,7 +92,7 @@ getArticleCountByCategory(csharpURL, {}).then((html) => {
                 if (totalCategory == executedCount) {
                     console.log("When we areach at Last category then generate file for");
                     //When we reached at Last category request then generate file json file 
-                    fs.writeFile('cSharpcornerStatistics.json', JSON.stringify(categoryResult), "utf8", function(err) {
+                    fs.writeFile('cSharpcornerStatistics--' + new Date().toShortFormat() + '.json', JSON.stringify(categoryResult), "utf8", function(err) {
                         // fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
                         if (err) {
                             console.log(err)
